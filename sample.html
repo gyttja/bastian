@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Super secret</title>
+
+    <style>
+        label {
+            display: block;
+        }
+
+        textarea {
+            display: block;
+        }
+
+        fieldset {
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🕵️ Super Secret</h1>
+    <form>
+        <div>
+            <fieldset>
+                <label for="message">Unencrypted</label>
+                <textarea name="plaintext" id="plaintext"></textarea>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <button type="button" onclick="encrypt();">⬇️</button>
+                <button type="button" onclick="decrypt();">⬆️</button>
+            </fieldset>
+        </div>
+
+        <div>
+            <fieldset>
+                <label for="message">Encrypted</label>
+                <textarea name="encrypted" id="encrypted"></textarea>
+            </fieldset>
+        </div>
+
+    </form>
+
+    <script>
+        const plaintext = document.getElementById('plaintext');
+        const encrypted = document.getElementById('encrypted');
+
+        const encrypt = () => {
+            encrypted.value = btoa(plaintext.value);
+            plaintext.value = "";
+        };
+
+        const decrypt = () => {
+            plaintext.value = atob(encrypted.value);
+            encrypted.value = "";
+        };
+
+    </script>
+
+</body>
+
+</html>
