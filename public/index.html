@@ -3,10 +3,79 @@
 
 <head>
     <title>bastian</title>
+
+    <style>
+        h1 {
+            font-size: 68px;
+        }
+
+        label {
+            display: block;
+        }
+
+        textarea {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>😎</h1>
+    <h1>Hemliga Medelanden</h1>
+    <p>Här kan du decrypta</p>
+
+    <form>
+
+        <label for="plaintext">Plain text:</label>
+        <textarea id="plaintext" name="plaintext" rows="4" cols="50"></textarea>
+
+        <button type="button" onclick="encrypt();">⬇️</button>
+        <button type="button" onclick="decrypt();">⬆️</button>
+
+        <label for="encrypted">encrypted:</label>
+        <textarea id="encrypted" name="encrypted" rows="4" cols="50"></textarea>
+    </form>
+
+    <script>
+        //alert("Hej Bastian! 🥹");
+
+
+        function decrypt() {
+
+
+            const encrypted = document.getElementById("encrypted").value;
+
+            const plaintext = decryptText(encrypted);
+
+            document.getElementById("plaintext").value = plaintext;
+            document.getElementById("encrypted").value = "";
+        }
+
+        function encrypt() {
+            const plaintext = document.getElementById("plaintext").value;
+
+
+            const encrypted = encryptText(plaintext);
+
+            document.getElementById("encrypted").value = encrypted;
+            document.getElementById("plaintext").value = "";
+        }
+
+        document.getElementById("plaintext").value = "";
+
+
+
+        document.getElementById("encrypted").value = "";
+
+
+        function decryptText(text) {
+            // do the real logic here
+            return atob(text);
+        }
+        function encryptText(text) {
+        return btoa(text);
+        }
+    </script>
+
 </body>
 
 </html>
